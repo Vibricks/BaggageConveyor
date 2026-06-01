@@ -1,0 +1,8 @@
+{
+    "languageMode": "nonstrict",
+    "lint": { "*": true, "LocalUnused": true, "LocalShadow": false },
+    "globals": ["warn"],
+    "aliases": {
+        "lune": "~/.lune/.typedefs/0.10.4"
+    }
+}

@@ -1,0 +1,1646 @@
+{
+  "name": "BagConveyor",
+  "className": "DataModel",
+  "filePaths": [
+    "default.project.json"
+  ],
+  "children": [
+    {
+      "name": "Lighting",
+      "className": "Lighting",
+      "children": [
+        {
+          "name": "Blur",
+          "className": "BlurEffect",
+          "filePaths": [
+            "build/Lighting/Blur.model.json"
+          ]
+        },
+        {
+          "name": "ColorCorrection",
+          "className": "ColorCorrectionEffect",
+          "filePaths": [
+            "build/Lighting/ColorCorrection.model.json"
+          ]
+        },
+        {
+          "name": "DepthOfField",
+          "className": "DepthOfFieldEffect",
+          "filePaths": [
+            "build/Lighting/DepthOfField.model.json"
+          ]
+        },
+        {
+          "name": "Skybox",
+          "className": "Sky",
+          "filePaths": [
+            "build/Lighting/Skybox.model.json"
+          ]
+        },
+        {
+          "name": "SunRays",
+          "className": "SunRaysEffect",
+          "filePaths": [
+            "build/Lighting/SunRays.model.json"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ReplicatedFirst",
+      "className": "ReplicatedFirst",
+      "children": [
+        {
+          "name": "Client",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "ClientRemotes",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/Client/ClientRemotes.luau"
+              ]
+            },
+            {
+              "name": "Systems",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "ClientConveyor",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Client/Systems/ClientConveyor.luau"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "initClient",
+              "className": "LocalScript",
+              "filePaths": [
+                "src/Client/initClient.client.luau"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ReplicatedStorage",
+      "className": "ReplicatedStorage",
+      "children": [
+        {
+          "name": "Assets",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Bags",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "DefaultBag",
+                  "className": "Model",
+                  "filePaths": [
+                    "build/ReplicatedStorage/Assets/Bags/DefaultBag.rbxm"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Packages",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Charm",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Charm.lua"
+              ]
+            },
+            {
+              "name": "CharmSync",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/CharmSync.lua"
+              ]
+            },
+            {
+              "name": "Flipper",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Flipper.lua"
+              ]
+            },
+            {
+              "name": "GreenTea",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/GreenTea.lua"
+              ]
+            },
+            {
+              "name": "Janitor",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Janitor.lua"
+              ]
+            },
+            {
+              "name": "Promise",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Promise.lua"
+              ]
+            },
+            {
+              "name": "Sift",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Sift.lua"
+              ]
+            },
+            {
+              "name": "Subject",
+              "className": "ModuleScript",
+              "filePaths": [
+                "Packages/Subject.lua"
+              ]
+            },
+            {
+              "name": "_Index",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "corecii_greentea@0.4.11",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "greentea",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/corecii_greentea@0.4.11/greentea/src/init.luau",
+                        "Packages/_Index/corecii_greentea@0.4.11/greentea/default.project.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "GreenTea",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/corecii_greentea@0.4.11/greentea/src/GreenTea.luau"
+                          ]
+                        },
+                        {
+                          "name": "InstanceClasses",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/corecii_greentea@0.4.11/greentea/src/InstanceClasses.luau"
+                          ]
+                        },
+                        {
+                          "name": "tCompat",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/corecii_greentea@0.4.11/greentea/src/tCompat.luau"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "evaera_promise@4.0.0",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/evaera_promise@4.0.0/promise/lib/init.lua",
+                        "Packages/_Index/evaera_promise@4.0.0/promise/default.project.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "init.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/evaera_promise@4.0.0/promise/lib/init.spec.lua"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "howmanysmall_janitor@1.18.3",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "Promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/howmanysmall_janitor@1.18.3/Promise.lua"
+                      ]
+                    },
+                    {
+                      "name": "janitor",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau",
+                        "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/default.project.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "FastDefer",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/FastDefer.luau"
+                          ]
+                        },
+                        {
+                          "name": "Promise",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/Promise.luau"
+                          ]
+                        },
+                        {
+                          "name": "__tests__",
+                          "className": "Folder",
+                          "children": [
+                            {
+                              "name": "Janitor.test",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/__tests__/Janitor.test.luau"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "jest.config",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/jest.config.luau"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "howmanysmall_typed-promise@4.0.6",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "Promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/howmanysmall_typed-promise@4.0.6/Promise.lua"
+                      ]
+                    },
+                    {
+                      "name": "typed-promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/howmanysmall_typed-promise@4.0.6/typed-promise/src/init.luau",
+                        "Packages/_Index/howmanysmall_typed-promise@4.0.6/typed-promise/default.project.json"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "littensy_charm-sync@0.3.0",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "charm-sync",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/init.luau"
+                      ],
+                      "children": [
+                        {
+                          "name": "src",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/init.luau"
+                          ],
+                          "children": [
+                            {
+                              "name": "client",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/client.luau"
+                              ]
+                            },
+                            {
+                              "name": "flatten",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/flatten.luau"
+                              ]
+                            },
+                            {
+                              "name": "interval",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/interval.luau"
+                              ]
+                            },
+                            {
+                              "name": "patch",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/patch.luau"
+                              ]
+                            },
+                            {
+                              "name": "server",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/server.luau"
+                              ]
+                            },
+                            {
+                              "name": "types",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/types.luau"
+                              ]
+                            },
+                            {
+                              "name": "validate",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/src/validate.luau"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "wally",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/littensy_charm-sync@0.3.0/charm-sync/wally.toml"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "charm",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/littensy_charm-sync@0.3.0/charm.lua"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "littensy_charm@0.10.0",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "charm",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/littensy_charm@0.10.0/charm/init.luau"
+                      ],
+                      "children": [
+                        {
+                          "name": "src",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/littensy_charm@0.10.0/charm/src/init.luau"
+                          ],
+                          "children": [
+                            {
+                              "name": "atom",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/atom.luau"
+                              ]
+                            },
+                            {
+                              "name": "computed",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/computed.luau"
+                              ]
+                            },
+                            {
+                              "name": "effect",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/effect.luau"
+                              ]
+                            },
+                            {
+                              "name": "mapped",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/mapped.luau"
+                              ]
+                            },
+                            {
+                              "name": "observe",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/observe.luau"
+                              ]
+                            },
+                            {
+                              "name": "store",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/store.luau"
+                              ]
+                            },
+                            {
+                              "name": "subscribe",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/subscribe.luau"
+                              ]
+                            },
+                            {
+                              "name": "types",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/littensy_charm@0.10.0/charm/src/types.luau"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "wally",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/littensy_charm@0.10.0/charm/wally.toml"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "lukadev-0_typed-promise@4.0.2",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "Promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/lukadev-0_typed-promise@4.0.2/Promise.lua"
+                      ]
+                    },
+                    {
+                      "name": "typed-promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/lukadev-0_typed-promise@4.0.2/typed-promise/lib/init.luau",
+                        "Packages/_Index/lukadev-0_typed-promise@4.0.2/typed-promise/default.project.json"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "nezuo_subject@0.2.0",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "Promise",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/nezuo_subject@0.2.0/Promise.lua"
+                      ]
+                    },
+                    {
+                      "name": "subject",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/nezuo_subject@0.2.0/subject/src/init.lua",
+                        "Packages/_Index/nezuo_subject@0.2.0/subject/default.project.json"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "reselim_flipper@2.0.0",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "flipper",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/reselim_flipper@2.0.0/flipper/src/init.lua",
+                        "Packages/_Index/reselim_flipper@2.0.0/flipper/default.project.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "BaseMotor",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/BaseMotor.lua"
+                          ]
+                        },
+                        {
+                          "name": "BaseMotor.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/BaseMotor.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "GroupMotor",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/GroupMotor.lua"
+                          ]
+                        },
+                        {
+                          "name": "GroupMotor.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/GroupMotor.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "Instant",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Instant.lua"
+                          ]
+                        },
+                        {
+                          "name": "Instant.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Instant.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "Linear",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Linear.lua"
+                          ]
+                        },
+                        {
+                          "name": "Linear.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Linear.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "Signal",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Signal.lua"
+                          ]
+                        },
+                        {
+                          "name": "Signal.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Signal.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "SingleMotor",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/SingleMotor.lua"
+                          ]
+                        },
+                        {
+                          "name": "SingleMotor.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/SingleMotor.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "Spring",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Spring.lua"
+                          ]
+                        },
+                        {
+                          "name": "Spring.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/Spring.spec.lua"
+                          ]
+                        },
+                        {
+                          "name": "isMotor",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/isMotor.lua"
+                          ]
+                        },
+                        {
+                          "name": "isMotor.spec",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/reselim_flipper@2.0.0/flipper/src/isMotor.spec.lua"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "sah31m_sift@0.0.9",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "sift",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "Packages/_Index/sah31m_sift@0.0.9/sift/src/init.lua",
+                        "Packages/_Index/sah31m_sift@0.0.9/sift/default.project.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Array",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/init.lua"
+                          ],
+                          "children": [
+                            {
+                              "name": "at",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/at.lua"
+                              ]
+                            },
+                            {
+                              "name": "concat",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/concat.lua"
+                              ]
+                            },
+                            {
+                              "name": "concatDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/concatDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "copy",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/copy.lua"
+                              ]
+                            },
+                            {
+                              "name": "copyDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/copyDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "count",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/count.lua"
+                              ]
+                            },
+                            {
+                              "name": "create",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/create.lua"
+                              ]
+                            },
+                            {
+                              "name": "difference",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/difference.lua"
+                              ]
+                            },
+                            {
+                              "name": "differenceSymmetric",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/differenceSymmetric.lua"
+                              ]
+                            },
+                            {
+                              "name": "equals",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/equals.lua"
+                              ]
+                            },
+                            {
+                              "name": "equalsDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/equalsDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "every",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/every.lua"
+                              ]
+                            },
+                            {
+                              "name": "filter",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/filter.lua"
+                              ]
+                            },
+                            {
+                              "name": "find",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/find.lua"
+                              ]
+                            },
+                            {
+                              "name": "findLast",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/findLast.lua"
+                              ]
+                            },
+                            {
+                              "name": "findWhere",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/findWhere.lua"
+                              ]
+                            },
+                            {
+                              "name": "findWhereLast",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/findWhereLast.lua"
+                              ]
+                            },
+                            {
+                              "name": "first",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/first.lua"
+                              ]
+                            },
+                            {
+                              "name": "flatten",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/flatten.lua"
+                              ]
+                            },
+                            {
+                              "name": "freeze",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/freeze.lua"
+                              ]
+                            },
+                            {
+                              "name": "freezeDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/freezeDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "includes",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/includes.lua"
+                              ]
+                            },
+                            {
+                              "name": "insert",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/insert.lua"
+                              ]
+                            },
+                            {
+                              "name": "is",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/is.lua"
+                              ]
+                            },
+                            {
+                              "name": "last",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/last.lua"
+                              ]
+                            },
+                            {
+                              "name": "map",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/map.lua"
+                              ]
+                            },
+                            {
+                              "name": "pop",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/pop.lua"
+                              ]
+                            },
+                            {
+                              "name": "push",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/push.lua"
+                              ]
+                            },
+                            {
+                              "name": "reduce",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/reduce.lua"
+                              ]
+                            },
+                            {
+                              "name": "reduceRight",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/reduceRight.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeIndex",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/removeIndex.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeIndices",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/removeIndices.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeValue",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/removeValue.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeValues",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/removeValues.lua"
+                              ]
+                            },
+                            {
+                              "name": "reverse",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/reverse.lua"
+                              ]
+                            },
+                            {
+                              "name": "set",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/set.lua"
+                              ]
+                            },
+                            {
+                              "name": "shift",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/shift.lua"
+                              ]
+                            },
+                            {
+                              "name": "shuffle",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/shuffle.lua"
+                              ]
+                            },
+                            {
+                              "name": "slice",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/slice.lua"
+                              ]
+                            },
+                            {
+                              "name": "some",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/some.lua"
+                              ]
+                            },
+                            {
+                              "name": "sort",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/sort.lua"
+                              ]
+                            },
+                            {
+                              "name": "splice",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/splice.lua"
+                              ]
+                            },
+                            {
+                              "name": "toSet",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/toSet.lua"
+                              ]
+                            },
+                            {
+                              "name": "unshift",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/unshift.lua"
+                              ]
+                            },
+                            {
+                              "name": "update",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/update.lua"
+                              ]
+                            },
+                            {
+                              "name": "zip",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/zip.lua"
+                              ]
+                            },
+                            {
+                              "name": "zipAll",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Array/zipAll.lua"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Dictionary",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/init.lua"
+                          ],
+                          "children": [
+                            {
+                              "name": "copy",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/copy.lua"
+                              ]
+                            },
+                            {
+                              "name": "copyDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/copyDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "count",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/count.lua"
+                              ]
+                            },
+                            {
+                              "name": "entries",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/entries.lua"
+                              ]
+                            },
+                            {
+                              "name": "equals",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/equals.lua"
+                              ]
+                            },
+                            {
+                              "name": "equalsDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/equalsDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "every",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/every.lua"
+                              ]
+                            },
+                            {
+                              "name": "filter",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/filter.lua"
+                              ]
+                            },
+                            {
+                              "name": "flatten",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/flatten.lua"
+                              ]
+                            },
+                            {
+                              "name": "flip",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/flip.lua"
+                              ]
+                            },
+                            {
+                              "name": "freeze",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/freeze.lua"
+                              ]
+                            },
+                            {
+                              "name": "freezeDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/freezeDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "fromArrays",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/fromArrays.lua"
+                              ]
+                            },
+                            {
+                              "name": "fromEntries",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/fromEntries.lua"
+                              ]
+                            },
+                            {
+                              "name": "getDifference",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/getDifference.lua"
+                              ]
+                            },
+                            {
+                              "name": "has",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/has.lua"
+                              ]
+                            },
+                            {
+                              "name": "includes",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/includes.lua"
+                              ]
+                            },
+                            {
+                              "name": "keys",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/keys.lua"
+                              ]
+                            },
+                            {
+                              "name": "map",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/map.lua"
+                              ]
+                            },
+                            {
+                              "name": "merge",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/merge.lua"
+                              ]
+                            },
+                            {
+                              "name": "mergeDeep",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/mergeDeep.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeKey",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/removeKey.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeKeys",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/removeKeys.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeValue",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/removeValue.lua"
+                              ]
+                            },
+                            {
+                              "name": "removeValues",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/removeValues.lua"
+                              ]
+                            },
+                            {
+                              "name": "set",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/set.lua"
+                              ]
+                            },
+                            {
+                              "name": "some",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/some.lua"
+                              ]
+                            },
+                            {
+                              "name": "update",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/update.lua"
+                              ]
+                            },
+                            {
+                              "name": "values",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/values.lua"
+                              ]
+                            },
+                            {
+                              "name": "withKeys",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Dictionary/withKeys.lua"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "None",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/None.lua"
+                          ]
+                        },
+                        {
+                          "name": "Set",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/init.lua"
+                          ],
+                          "children": [
+                            {
+                              "name": "add",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/add.lua"
+                              ]
+                            },
+                            {
+                              "name": "copy",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/copy.lua"
+                              ]
+                            },
+                            {
+                              "name": "count",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/count.lua"
+                              ]
+                            },
+                            {
+                              "name": "delete",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/delete.lua"
+                              ]
+                            },
+                            {
+                              "name": "difference",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/difference.lua"
+                              ]
+                            },
+                            {
+                              "name": "differenceSymmetric",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/differenceSymmetric.lua"
+                              ]
+                            },
+                            {
+                              "name": "filter",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/filter.lua"
+                              ]
+                            },
+                            {
+                              "name": "fromArray",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/fromArray.lua"
+                              ]
+                            },
+                            {
+                              "name": "has",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/has.lua"
+                              ]
+                            },
+                            {
+                              "name": "intersection",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/intersection.lua"
+                              ]
+                            },
+                            {
+                              "name": "isSubset",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/isSubset.lua"
+                              ]
+                            },
+                            {
+                              "name": "isSuperset",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/isSuperset.lua"
+                              ]
+                            },
+                            {
+                              "name": "map",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/map.lua"
+                              ]
+                            },
+                            {
+                              "name": "merge",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/merge.lua"
+                              ]
+                            },
+                            {
+                              "name": "toArray",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Set/toArray.lua"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Types",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/Types.lua"
+                          ]
+                        },
+                        {
+                          "name": "Util",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "Packages/_Index/sah31m_sift@0.0.9/sift/src/Util/init.lua"
+                          ],
+                          "children": [
+                            {
+                              "name": "equalObjects",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Util/equalObjects.lua"
+                              ]
+                            },
+                            {
+                              "name": "func",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Util/func.lua"
+                              ]
+                            },
+                            {
+                              "name": "isEmpty",
+                              "className": "ModuleScript",
+                              "filePaths": [
+                                "Packages/_Index/sah31m_sift@0.0.9/sift/src/Util/isEmpty.lua"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Shared",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Store",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "ConveyorStore",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/Store/ConveyorStore/init.luau"
+                  ],
+                  "children": [
+                    {
+                      "name": "conveyorSchema",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "src/Shared/Store/ConveyorStore/conveyorSchema.luau"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Sync",
+                  "className": "Folder",
+                  "children": [
+                    {
+                      "name": "Atoms",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "src/Shared/Store/Sync/Atoms.luau"
+                      ]
+                    },
+                    {
+                      "name": "Utils",
+                      "className": "Folder",
+                      "children": [
+                        {
+                          "name": "FilterPayload",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "src/Shared/Store/Sync/Utils/FilterPayload.luau"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "SystemLoader",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/Shared/SystemLoader/init.luau"
+              ],
+              "children": [
+                {
+                  "name": "dispatch",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/SystemLoader/dispatch.luau"
+                  ]
+                },
+                {
+                  "name": "fetch",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/SystemLoader/fetch/init.luau"
+                  ],
+                  "children": [
+                    {
+                      "name": "noYield",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "src/Shared/SystemLoader/fetch/noYield.luau"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Util",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "Object",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/Util/Object.luau"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ServerScriptService",
+      "className": "ServerScriptService",
+      "children": [
+        {
+          "name": "Server",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "ServerRemotes",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/Server/ServerRemotes.luau"
+              ]
+            },
+            {
+              "name": "Systems",
+              "className": "Folder",
+              "children": [
+                {
+                  "name": "ServerConveyor",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Server/Systems/ServerConveyor/init.luau"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "initServer",
+              "className": "Script",
+              "filePaths": [
+                "src/Server/initServer.server.luau"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StarterGui",
+      "className": "StarterGui",
+      "children": [
+        {
+          "name": "HUD",
+          "className": "ScreenGui",
+          "filePaths": [
+            "build/StarterGui/HUD.rbxm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StarterPlayer",
+      "className": "StarterPlayer",
+      "children": [
+        {
+          "name": "StarterCharacterScripts",
+          "className": "StarterCharacterScripts",
+          "filePaths": [
+            "build/StarterPlayer/StarterCharacterScripts.rbxm"
+          ]
+        },
+        {
+          "name": "StarterPlayerScripts",
+          "className": "StarterPlayerScripts",
+          "filePaths": [
+            "build/StarterPlayer/StarterPlayerScripts.rbxm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TextChatService",
+      "className": "TextChatService",
+      "children": [
+        {
+          "name": "BubbleChatConfiguration",
+          "className": "BubbleChatConfiguration",
+          "filePaths": [
+            "build/TextChatService/BubbleChatConfiguration.model.json"
+          ]
+        },
+        {
+          "name": "ChannelTabsConfiguration",
+          "className": "ChannelTabsConfiguration",
+          "filePaths": [
+            "build/TextChatService/ChannelTabsConfiguration.model.json"
+          ]
+        },
+        {
+          "name": "ChatInputBarConfiguration",
+          "className": "ChatInputBarConfiguration",
+          "filePaths": [
+            "build/TextChatService/ChatInputBarConfiguration.model.json"
+          ]
+        },
+        {
+          "name": "ChatWindowConfiguration",
+          "className": "ChatWindowConfiguration",
+          "filePaths": [
+            "build/TextChatService/ChatWindowConfiguration.model.json"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workspace",
+      "className": "Workspace",
+      "children": [
+        {
+          "name": "Active",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "ConveyorModel",
+              "className": "Model",
+              "filePaths": [
+                "build/Workspace/Active/ConveyorModel.rbxm"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Map",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Baseplate",
+              "className": "Part",
+              "filePaths": [
+                "build/Workspace/Map/Baseplate.rbxm"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SpawnLocation",
+          "className": "SpawnLocation",
+          "filePaths": [
+            "build/Workspace/SpawnLocation.rbxm"
+          ]
+        },
+        {
+          "name": "Terrain",
+          "className": "Terrain",
+          "filePaths": [
+            "build/Workspace/Terrain.rbxm"
+          ]
+        }
+      ]
+    }
+  ]
+}

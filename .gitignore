@@ -1,0 +1,11 @@
+/.env
+
+# Roblox Studio files
+/*.rbxl
+/*.rbxl.lock
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Project Packages (These can be pulled with wally)
+/Packages
+/ServerPackages

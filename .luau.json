@@ -1,0 +1,8 @@
+{
+	"require": {
+		"mode": "relativeToRoot"
+	},
+	"rojo": {
+		"sourcemap": "sourcemap.json"
+	}
+}

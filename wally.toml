@@ -1,0 +1,15 @@
+[package]
+name = "vibricks/bagconveyor"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+GreenTea = "corecii/greentea@0.4.11"
+Subject = "nezuo/subject@0.2.0"
+Janitor = "howmanysmall/janitor@^1.17.0"
+Charm = "littensy/charm@0.10.0"
+CharmSync = "littensy/charm-sync@0.3.0"
+Promise = "lukadev-0/typed-promise@4.0.2"
+Sift = "sah31m/sift@0.0.9"
+Flipper = "reselim/flipper@2.0.0"

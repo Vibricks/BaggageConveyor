@@ -1,0 +1,110 @@
+{
+	"name": "BagConveyor",
+	"tree": {
+		"$className": "DataModel",
+		"Lighting": {
+			"$properties": {
+				"Ambient": [0.7803921699523926, 0.5568627715110779, 1.0],
+				"Brightness": 1.9500000476837158,
+				"EnvironmentDiffuseScale": 0.1379999965429306,
+				"EnvironmentSpecularScale": 0.1899999976158142,
+				"GlobalShadows": true,
+				"OutdoorAmbient": [
+					0.48235294222831726, 0.7882353067398071, 0.8823529481887817
+				],
+				"PrioritizeLightingQuality": true
+			},
+			"$path": "build/Lighting"
+		},
+		"MaterialService": {
+			"$path": "build/MaterialService"
+		},
+		"ReplicatedFirst": {
+			"Client": {
+				"$path": "src/Client"
+			},
+			"$path": "src/ReplicatedFirst"
+		},
+		"ReplicatedStorage": {
+			"Packages": {
+				"$path": "Packages"
+			},
+			"Shared": {
+				"$path": "src/Shared"
+			},
+			"$path": "build/ReplicatedStorage"
+		},
+		"ServerScriptService": {
+			"Server": {
+				"$path": "src/Server"
+			},
+			"$path": "build/ServerScriptService"
+		},
+		"ServerStorage": {
+			"$path": "build/ServerStorage"
+		},
+		"SoundService": {
+			"$path": "build/SoundService"
+		},
+		"StarterGui": {
+			"$properties": {
+				"ClipsDescendantsSupportsRotation": {
+					"Enum": 0
+				}
+			},
+			"$path": "build/StarterGui"
+		},
+		"StarterPack": {
+			"$path": "build/StarterPack"
+		},
+		"StarterPlayer": {
+			"$path": "build/StarterPlayer"
+		},
+		"Teams": {
+			"$path": "build/Teams"
+		},
+		"TextChatService": {
+			"$path": "build/TextChatService"
+		},
+		"Workspace": {
+			"$properties": {
+				"EnableSLIMAvatars": {
+					"Enum": 0
+				},
+				"ImprovedAnimationConstraint": {
+					"Enum": 0
+				},
+				"LayeredClothingCacheOptimizations": {
+					"Enum": 0
+				},
+				"MeshStreamingAndImprovedLods": {
+					"Enum": 0
+				},
+				"NextGenerationReplication": {
+					"Enum": 0
+				},
+				"PlayerScriptsUseInputActionSystem": {
+					"Enum": 0
+				},
+				"UseFixedSimulation": {
+					"Enum": 0
+				},
+				"ValidateEnabledProximityPrompt": {
+					"Enum": 0
+				}
+			},
+			"$path": "build/Workspace"
+		}
+	},
+	"syncbackRules": {
+		"ignoreTrees": [
+			"ReplicatedFirst/Client",
+			"ReplicatedStorage/Packages",
+			"ReplicatedStorage/Shared",
+			"ServerScriptService/Server"
+		],
+		"syncCurrentCamera": false,
+		"syncUnscriptable": true,
+		"ignoreReferents": false
+	}
+}
