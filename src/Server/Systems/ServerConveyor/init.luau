@@ -4,29 +4,31 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Sift = require(ReplicatedStorage.Packages.Sift)
 local ConveyorStore = require(ReplicatedStorage.Shared.Store.ConveyorStore)
 local conveyorSchema = require(ReplicatedStorage.Shared.Store.ConveyorStore.conveyorSchema)
+local ConveyorUtil = require(ReplicatedStorage.Shared.Util.ConveyorUtil)
 
 local module = {}
 
+module.ActiveConveyorModels = {}
+
 local firstPlayer: Player
 
-local function loadConveyor(model: typeof(workspace.Active.ConveyorModel))
-	warn("setting up conveyor", model)
-
+local function loadConveyor(conveyorModel: ConveyorUtil.ConveyorModel)
 	local generatedId = string.sub(HttpService:GenerateGUID(false), 1, 4)
 	local conveyorId = "Conveyor-" .. generatedId
 
-	model.Name = conveyorId
-
 	local data = conveyorSchema.getDefaultData()
 	data.UUID = conveyorId
+
+	conveyorModel.Name = conveyorId
+	conveyorModel:SetAttribute("Velocity", data.Velocity)
 
 	if firstPlayer then
 		data.Owner = firstPlayer.UserId
 	end
 
 	ConveyorStore.setConveyorData(conveyorId, conveyorSchema.getDefaultData())
-	local conveyorData = ConveyorStore.getConveyorData(conveyorId)
-	warn(conveyorData)
+
+	module.ActiveConveyorModels[conveyorId] = conveyorModel
 end
 
 local function generateRandomBag(conveyorId): conveyorSchema.BagData
@@ -57,16 +59,29 @@ function module.start()
 		for conveyorId, conveyorData in conveyorAtom() do
 			local spawnInterval = conveyorData.SpawnInterval
 			local lastSpawnTime = conveyorData.LastSpawnTime
-			local newBag = generateRandomBag(conveyorId)
 
 			if os.clock() - lastSpawnTime > spawnInterval then
-				print(conveyorId, conveyorData)
+				--We generate the bag here
+				local newBag = generateRandomBag(conveyorId)
 
+				--We update the conveyor atom so that the new bag replicates to every client
 				ConveyorStore.updateConveyorData(conveyorId, function(state)
 					return Sift.Dictionary.merge(state, {
 						LastSpawnTime = os.clock(),
 						ActiveBags = Sift.Dictionary.merge(state.ActiveBags, { [newBag.UUID] = newBag }),
 					})
+				end)
+
+				--We determine the life time of the bag based on the distance and speed of the conveyor belt
+				local bagLifeTime = ConveyorUtil.calculateBagLifeTime(module.ActiveConveyorModels[conveyorId])
+
+				--We clean up after the end is reached based on the calculation above
+				task.delay(bagLifeTime, function()
+					ConveyorStore.updateConveyorData(conveyorId, function(state)
+						return Sift.Dictionary.merge(state, {
+							ActiveBags = Sift.Dictionary.removeKey(state.ActiveBags, newBag.UUID),
+						})
+					end)
 				end)
 			end
 		end

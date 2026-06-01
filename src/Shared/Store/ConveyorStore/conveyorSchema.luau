@@ -14,14 +14,16 @@ local conveyorSchema = gt.build(gt.table({
 	ActiveBags = gt.struct({ [gt.string()] = bagData }),
 	SpawnInterval = gt.number(),
 	LastSpawnTime = gt.number(),
+	Velocity = gt.number(),
 	Owner = gt.number(), --We'll use the playerId here
 	UUID = gt.number(),
 }))
 
 local defaultData: ConveyorData = {
 	ActiveBags = {},
-	SpawnInterval = 5,
+	SpawnInterval = 3,
 	LastSpawnTime = os.clock(),
+	Velocity = 10,
 	Owner = nil, -- We'll set this when theres an available player
 	UUID = nil, --We'll se this at run time
 }

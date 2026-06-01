@@ -1483,6 +1483,13 @@
                   "filePaths": [
                     "src/Shared/Util/Object.luau"
                   ]
+                },
+                {
+                  "name": "ConveyorUtil",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/Util/ConveyorUtil.luau"
+                  ]
                 }
               ]
             }
