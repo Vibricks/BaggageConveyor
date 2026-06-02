@@ -9,25 +9,42 @@ local module = {}
 
 local activeBagModels = {}
 
-local function moveBag(bagModel: ConveyorUtil.bagModel, conveyorModel)
+local function animateBag(bagModel: ConveyorUtil.bagModel, conveyorModel)
 	local startPos = conveyorModel.StartPoint.Position
 	local endPos = conveyorModel.EndPoint.Position
 	local distance = (endPos - startPos).Magnitude
 	local direction = (endPos - startPos).Unit
 
 	local velocity = conveyorModel:GetAttribute("Velocity") or 1
+	local bagLifeTime = ConveyorUtil.calculateBagLifeTime(conveyorModel)
 
-	local motor = Flipper.SingleMotor.new(0)
-	motor:setGoal(Flipper.Linear.new(distance, { velocity = velocity }))
+	local positionMotor = Flipper.SingleMotor.new(0)
+	positionMotor:setGoal(Flipper.Linear.new(distance, { velocity = velocity }))
 
-	motor:onStep(function(value)
-		bagModel:PivotTo(CFrame.new(startPos + direction * value))
+	local scaleMotor = Flipper.SingleMotor.new(0.3)
+	scaleMotor:setGoal(Flipper.Spring.new(1, { frequency = 5, dampingRatio = 0.8 }))
+
+	local rotationMotor = Flipper.SingleMotor.new(0)
+	rotationMotor:setGoal(Flipper.Linear.new(math.pi * 2, { velocity = 12 }))
+
+	positionMotor:onStep(function(value)
+		bagModel:PivotTo(CFrame.new(startPos + direction * value) * CFrame.Angles(0, rotationMotor:getValue(), 0))
 	end)
 
-	motor:onComplete(function() end)
+	scaleMotor:onStep(function(value)
+		bagModel:ScaleTo(value)
+	end)
 
-	local bagLifeTime = ConveyorUtil.calculateBagLifeTime(conveyorModel)
-	task.wait(bagLifeTime)
+	task.wait(bagLifeTime - 0.3)
+
+	local scaleOutMotor = Flipper.SingleMotor.new(1)
+	scaleOutMotor:setGoal(Flipper.Spring.new(0.1, { frequency = 5, dampingRatio = 0.8 }))
+
+	scaleOutMotor:onStep(function(value)
+		bagModel:ScaleTo(value)
+	end)
+
+	task.wait(0.3)
 	bagModel:Destroy()
 end
 
@@ -44,26 +61,29 @@ local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 		return
 	end
 
-	--We spawn the bag here
 	local bagModel = ReplicatedStorage.Assets.Bags.DefaultBag:Clone()
 	updateBagVisuals(bagModel, bagData)
 
 	bagModel.Parent = workspace
 	bagModel:PivotTo(conveyorModel.StartPoint.CFrame)
+	bagModel:ScaleTo(0.3)
 
-	--We track the bag in a table incase we ever want to easily reference it
 	if not activeBagModels[conveyorId] then
 		activeBagModels[conveyorId] = {}
 	end
 	activeBagModels[conveyorId][bagData.UUID] = bagModel
 
-	--We move the bag along the conveyor belt here
-	moveBag(bagModel, conveyorModel)
+	animateBag(bagModel, conveyorModel)
 
 	return bagModel
 end
 
 function module.start()
+	--I'm doing this to fix a weird bug with the first bag not loading correctly (Really weird)
+	local dummyBag = ReplicatedStorage.Assets.Bags.DefaultBag:Clone()
+	dummyBag.Parent = workspace
+	dummyBag:Destroy()
+
 	local ConveyorAtom = ConveyorStore.getAtom()
 
 	Charm.subscribe(ConveyorAtom, function(newState, oldState)
@@ -72,14 +92,12 @@ function module.start()
 			local oldConveyorData = oldState[conveyorId]
 			local oldActiveBags = oldConveyorData and oldConveyorData.ActiveBags or {}
 
-			--We add new bags here
 			for bagId, bagData in activeBags do
 				if not oldActiveBags[bagId] then
 					spawnBag(conveyorId, bagData)
 				end
 			end
 
-			--We delete old bags here
 			for bagId in oldActiveBags do
 				if not activeBags[bagId] then
 					local bagModel = activeBagModels[conveyorId] and activeBagModels[conveyorId][bagId]
