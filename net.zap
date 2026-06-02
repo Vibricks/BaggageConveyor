@@ -32,3 +32,11 @@ event toggleSlider ={
 	call: SingleAsync,
 	data: (boolean, f32),
 }
+
+
+event printBagInfo ={
+    from: Client,
+	type: Reliable,
+	call: SingleAsync,
+	data: string,
+}

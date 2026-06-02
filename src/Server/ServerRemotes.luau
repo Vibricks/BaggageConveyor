@@ -154,6 +154,9 @@ if not RunService:IsRunning() then
 			fireList = noop,
 			fireSet = noop
 		}),
+		printBagInfo = table.freeze({
+			setCallback = noop
+		}),
 	}) :: Events
 end
 
@@ -203,7 +206,7 @@ end
 
 RunService.Heartbeat:Connect(sendEvents)
 
-local reliable_events = table.create(2)
+local reliable_events = table.create(3)
 reliable.OnServerEvent:Connect(function(player, buff, inst)
 	incoming_buff = buff
 	incoming_inst = inst
@@ -229,6 +232,13 @@ reliable.OnServerEvent:Connect(function(player, buff, inst)
 			end
 			if reliable_events[0] then
 				task.spawn(reliable_events[0], player, value)
+			end
+		elseif id == 2 then -- printBagInfo
+			local value
+			local len_1 = buffer.readu16(incoming_buff, read(2))
+			value = buffer.readstring(incoming_buff, read(len_1), len_1)
+			if reliable_events[2] then
+				task.spawn(reliable_events[2], player, value)
 			end
 		else
 			error("Unknown event id")
@@ -452,6 +462,14 @@ local returns = {
 				buffer.copy(outgoing_buff, outgoing_apos, buff, 0, used)
 				table.move(inst, 1, #inst, #outgoing_inst + 1, outgoing_inst)
 				player_map[player] = save()
+			end
+		end,
+	},
+	printBagInfo = {
+		setCallback = function(callback: (player: Player, value: (string)) -> ()): () -> ()
+			reliable_events[2] = callback
+			return function()
+				reliable_events[2] = nil
 			end
 		end,
 	},

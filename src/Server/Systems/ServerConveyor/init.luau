@@ -73,6 +73,18 @@ function module.start()
 		end
 	end)
 
+	ServerRemotes.printBagInfo.setCallback(function(player: Player, bagId: string)
+		for conveyorId, v in module.ActiveConveyorModels do
+			local conveyorData = ConveyorStore.getConveyorData(conveyorId)
+			local bagData = conveyorData.ActiveBags[bagId]
+
+			if bagData then
+				print("Server:", bagData)
+			end
+		end
+	end)
+
+	task.wait(4)
 	while true do
 		local conveyorAtom = ConveyorStore.getAtom()
 

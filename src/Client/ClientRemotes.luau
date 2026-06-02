@@ -144,6 +144,9 @@ if not RunService:IsRunning() then
 		replicateState = table.freeze({
 			setCallback = noop
 		}),
+		printBagInfo = table.freeze({
+			fire = noop
+		}),
 	}) :: Events
 end
 local remotes = ReplicatedStorage:WaitForChild("ZAP")
@@ -263,6 +266,17 @@ local returns = {
 			return function()
 				reliable_events[0] = nil
 			end
+		end,
+	},
+	printBagInfo = {
+		fire = function(value: (string))
+			alloc(1)
+			buffer.writeu8(outgoing_buff, outgoing_apos, 2)
+			local len_1 = #value
+			alloc(2)
+			buffer.writeu16(outgoing_buff, outgoing_apos, len_1)
+			alloc(len_1)
+			buffer.writestring(outgoing_buff, outgoing_apos, value, len_1)
 		end,
 	},
 }

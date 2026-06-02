@@ -1,5 +1,8 @@
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
 local SoundService = game:GetService("SoundService")
+local ClientRemotes = require(ReplicatedFirst.Client.ClientRemotes)
 local Charm = require(ReplicatedStorage.Packages.Charm)
 local Flipper = require(ReplicatedStorage.Packages.Flipper)
 local ConveyorStore = require(ReplicatedStorage.Shared.Store.ConveyorStore)
@@ -62,6 +65,16 @@ local function updateBagVisuals(bagModel: ConveyorUtil.bagModel, bagData: convey
 	bagModel.Main.Material = bagData.Material
 end
 
+local function handleClick(bagModel, bagData)
+	local clickDetector = Instance.new("ClickDetector")
+	clickDetector.Parent = bagModel.PrimaryPart or bagModel.Main
+
+	clickDetector.MouseClick:Connect(function()
+		print("Client:", bagData)
+		ClientRemotes.printBagInfo.fire(bagData.UUID)
+	end)
+end
+
 local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 	local conveyorModel = workspace.Active:FindFirstChild(conveyorId)
 
@@ -71,6 +84,8 @@ local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 	end
 
 	local bagModel = ReplicatedStorage.Assets.Bags.DefaultBag:Clone()
+	handleClick(bagModel, bagData)
+
 	updateBagVisuals(bagModel, bagData)
 
 	bagModel.Parent = workspace
@@ -88,11 +103,6 @@ local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 end
 
 function module.start()
-	--I'm doing this to fix a weird bug with the first bag not loading correctly (Really weird)
-	local dummyBag = ReplicatedStorage.Assets.Bags.DefaultBag:Clone()
-	dummyBag.Parent = workspace
-	dummyBag:Destroy()
-
 	local ConveyorAtom = ConveyorStore.getAtom()
 
 	Charm.subscribe(ConveyorAtom, function(newState, oldState)
