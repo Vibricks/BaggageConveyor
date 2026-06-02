@@ -18,3 +18,17 @@ event replicateState ={
 	call: SingleAsync,
 	data: unknown,
 }
+
+event updateSpawnInterval ={
+    from: Client,
+	type: Reliable,
+	call: SingleAsync,
+	data: f32,
+}
+
+event toggleSlider ={
+    from: Server,
+	type: Reliable,
+	call: SingleAsync,
+	data: boolean,
+}

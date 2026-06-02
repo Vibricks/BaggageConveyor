@@ -1,6 +1,9 @@
 local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerScriptService = game:GetService("ServerScriptService")
+local ServerRemotes = require(ServerScriptService.Server.ServerRemotes)
 local Sift = require(ReplicatedStorage.Packages.Sift)
 local ConveyorStore = require(ReplicatedStorage.Shared.Store.ConveyorStore)
 local conveyorSchema = require(ReplicatedStorage.Shared.Store.ConveyorStore.conveyorSchema)
@@ -9,8 +12,6 @@ local ConveyorUtil = require(ReplicatedStorage.Shared.Util.ConveyorUtil)
 local module = {}
 
 module.ActiveConveyorModels = {}
-
-local firstPlayer: Player
 
 local function loadConveyor(conveyorModel: ConveyorUtil.ConveyorModel)
 	local generatedId = string.sub(HttpService:GenerateGUID(false), 1, 4)
@@ -21,10 +22,6 @@ local function loadConveyor(conveyorModel: ConveyorUtil.ConveyorModel)
 
 	conveyorModel.Name = conveyorId
 	conveyorModel:SetAttribute("Velocity", data.Velocity)
-
-	if firstPlayer then
-		data.Owner = firstPlayer.UserId
-	end
 
 	ConveyorStore.setConveyorData(conveyorId, conveyorSchema.getDefaultData())
 
@@ -60,6 +57,20 @@ function module.start()
 
 	CollectionService:GetInstanceAddedSignal("Conveyor"):Connect(function(model)
 		loadConveyor(model)
+	end)
+
+	ServerRemotes.updateSpawnInterval.setCallback(function(player, newInterval)
+		newInterval = math.clamp(newInterval, ConveyorUtil.MIN_SPAWN_INTERVAL, ConveyorUtil.MAX_SPAWN_INTERVAL)
+
+		for conveyorId, v in module.ActiveConveyorModels do
+			if player:GetAttribute("AssignedConveyor") == conveyorId then
+				ConveyorStore.updateConveyorData(conveyorId, function(state)
+					return Sift.Dictionary.merge(state, {
+						SpawnInterval = newInterval,
+					})
+				end)
+			end
+		end
 	end)
 
 	while true do
@@ -99,9 +110,15 @@ function module.start()
 	end
 end
 
-function module.playerAdded(player)
-	if not firstPlayer then
-		firstPlayer = player
+function module.onPlayerAdded(player)
+	for conveyorId, _ in module.ActiveConveyorModels do
+		local conveyorData = ConveyorStore.getConveyorData(conveyorId)
+
+		if not conveyorData.Owner then
+			conveyorData.Owner = player.UserId
+			player:SetAttribute("AssignedConveyor", conveyorId)
+			ServerRemotes.toggleSlider.fire(player, true)
+		end
 	end
 end
 

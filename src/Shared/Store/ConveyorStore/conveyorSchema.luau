@@ -21,7 +21,7 @@ local conveyorSchema = gt.build(gt.table({
 
 local defaultData: ConveyorData = {
 	ActiveBags = {},
-	SpawnInterval = 3,
+	SpawnInterval = 1,
 	LastSpawnTime = os.clock(),
 	Velocity = 10,
 	Owner = nil, -- We'll set this when theres an available player

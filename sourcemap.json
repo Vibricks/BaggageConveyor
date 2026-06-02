@@ -71,6 +71,31 @@
                   "filePaths": [
                     "src/Client/Systems/ClientConveyor.luau"
                   ]
+                },
+                {
+                  "name": "Interface",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Client/Systems/Interface/init.luau"
+                  ],
+                  "children": [
+                    {
+                      "name": "HUD",
+                      "className": "ModuleScript",
+                      "filePaths": [
+                        "src/Client/Systems/Interface/HUD/init.luau"
+                      ],
+                      "children": [
+                        {
+                          "name": "Slider",
+                          "className": "ModuleScript",
+                          "filePaths": [
+                            "src/Client/Systems/Interface/HUD/Slider/init.luau"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -1478,17 +1503,17 @@
               "className": "Folder",
               "children": [
                 {
-                  "name": "Object",
-                  "className": "ModuleScript",
-                  "filePaths": [
-                    "src/Shared/Util/Object.luau"
-                  ]
-                },
-                {
                   "name": "ConveyorUtil",
                   "className": "ModuleScript",
                   "filePaths": [
                     "src/Shared/Util/ConveyorUtil.luau"
+                  ]
+                },
+                {
+                  "name": "Object",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/Shared/Util/Object.luau"
                   ]
                 }
               ]

@@ -132,6 +132,12 @@ if not RunService:IsRunning() then
 	local noop = function() end
 	return table.freeze({
 		sendEvents = noop,
+		updateSpawnInterval = table.freeze({
+			fire = noop
+		}),
+		toggleSlider = table.freeze({
+			setCallback = noop
+		}),
 		requestState = table.freeze({
 			fire = noop
 		}),
@@ -162,8 +168,9 @@ end
 
 RunService.Heartbeat:Connect(sendEvents)
 
-local reliable_events = table.create(1)
-local reliable_event_queue: { [number]: { any } } = table.create(1)
+local reliable_events = table.create(2)
+local reliable_event_queue: { [number]: { any } } = table.create(2)
+reliable_event_queue[1] = {}
 reliable_event_queue[0] = {}
 reliable.OnClientEvent:Connect(function(buff, inst)
 	incoming_buff = buff
@@ -173,10 +180,22 @@ reliable.OnClientEvent:Connect(function(buff, inst)
 	local len = buffer.len(buff)
 	while incoming_read < len do
 		local id = buffer.readu8(buff, read(1))
-		if id == 0 then -- replicateState
+		if id == 1 then -- toggleSlider
 			local value
 			local bool_1 = buffer.readu8(incoming_buff, read(1))
-			if bit32.btest(bool_1, 0b0000000000000001) then
+			value = bit32.btest(bool_1, 0b0000000000000001)
+			if reliable_events[1] then
+				task.spawn(reliable_events[1], value)
+			else
+				table.insert(reliable_event_queue[1], value)
+				if #reliable_event_queue[1] > 64 then
+					warn(`[ZAP] {#reliable_event_queue[1]} events in queue for toggleSlider. Did you forget to attach a listener?`)
+				end
+			end
+		elseif id == 0 then -- replicateState
+			local value
+			local bool_2 = buffer.readu8(incoming_buff, read(1))
+			if bit32.btest(bool_2, 0b0000000000000001) then
 				incoming_ipos = incoming_ipos + 1
 				value = incoming_inst[incoming_ipos]
 			else
@@ -200,17 +219,37 @@ table.freeze(polling_queues_unreliable)
 
 local returns = {
 	sendEvents = sendEvents,
+	updateSpawnInterval = {
+		fire = function(value: (number))
+			alloc(1)
+			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value)
+		end,
+	},
+	toggleSlider = {
+		setCallback = function(callback: (value: (boolean)) -> ()): () -> ()
+			reliable_events[1] = callback
+			for _, value in reliable_event_queue[1] do
+				task.spawn(callback, value)
+			end
+			reliable_event_queue[1] = {}
+			return function()
+				reliable_events[1] = nil
+			end
+		end,
+	},
 	requestState = {
 		fire = function(value: ((unknown)))
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 0)
-			local bool_2 = 0
-			local bool_2_pos_1 = alloc(1)
+			local bool_3 = 0
+			local bool_3_pos_1 = alloc(1)
 			if value ~= nil then
-				bool_2 = bit32.bor(bool_2, 0b0000000000000001)
+				bool_3 = bit32.bor(bool_3, 0b0000000000000001)
 				table.insert(outgoing_inst, value)
 			end
-			buffer.writeu8(outgoing_buff, bool_2_pos_1, bool_2)
+			buffer.writeu8(outgoing_buff, bool_3_pos_1, bool_3)
 		end,
 	},
 	replicateState = {
