@@ -30,5 +30,5 @@ event toggleSlider ={
     from: Server,
 	type: Reliable,
 	call: SingleAsync,
-	data: boolean,
+	data: (boolean, f32),
 }

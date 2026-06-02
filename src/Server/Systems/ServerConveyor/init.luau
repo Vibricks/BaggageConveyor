@@ -117,7 +117,7 @@ function module.onPlayerAdded(player)
 		if not conveyorData.Owner then
 			conveyorData.Owner = player.UserId
 			player:SetAttribute("AssignedConveyor", conveyorId)
-			ServerRemotes.toggleSlider.fire(player, true)
+			ServerRemotes.toggleSlider.fire(player, true, conveyorData.SpawnInterval)
 		end
 	end
 end

@@ -181,13 +181,14 @@ reliable.OnClientEvent:Connect(function(buff, inst)
 	while incoming_read < len do
 		local id = buffer.readu8(buff, read(1))
 		if id == 1 then -- toggleSlider
-			local value
+			local value, value2
 			local bool_1 = buffer.readu8(incoming_buff, read(1))
 			value = bit32.btest(bool_1, 0b0000000000000001)
+			value2 = buffer.readf32(incoming_buff, read(4))
 			if reliable_events[1] then
-				task.spawn(reliable_events[1], value)
+				task.spawn(reliable_events[1], value, value2)
 			else
-				table.insert(reliable_event_queue[1], value)
+				table.insert(reliable_event_queue[1], { value, value2 })
 				if #reliable_event_queue[1] > 64 then
 					warn(`[ZAP] {#reliable_event_queue[1]} events in queue for toggleSlider. Did you forget to attach a listener?`)
 				end
@@ -228,10 +229,10 @@ local returns = {
 		end,
 	},
 	toggleSlider = {
-		setCallback = function(callback: (value: (boolean)) -> ()): () -> ()
+		setCallback = function(callback: (value: (boolean), value2: (number)) -> ()): () -> ()
 			reliable_events[1] = callback
 			for _, value in reliable_event_queue[1] do
-				task.spawn(callback, value)
+				task.spawn(callback, unpack(value))
 			end
 			reliable_event_queue[1] = {}
 			return function()

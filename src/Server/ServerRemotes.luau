@@ -249,7 +249,7 @@ local returns = {
 		end,
 	},
 	toggleSlider = {
-		fire = function(player: Player, value: (boolean))
+		fire = function(player: Player, value: (boolean), value2: (number))
 			load_player(player)
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
@@ -258,10 +258,12 @@ local returns = {
 			if value then
 				bool_2 = bit32.bor(bool_2, 0b0000000000000001)
 			end
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value2)
 			buffer.writeu8(outgoing_buff, bool_2_pos_1, bool_2)
 			player_map[player] = save()
 		end,
-		fireAll = function(value: (boolean))
+		fireAll = function(value: (boolean), value2: (number))
 			load_empty()
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
@@ -270,6 +272,8 @@ local returns = {
 			if value then
 				bool_3 = bit32.bor(bool_3, 0b0000000000000001)
 			end
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value2)
 			buffer.writeu8(outgoing_buff, bool_3_pos_1, bool_3)
 			local buff, used, inst = outgoing_buff, outgoing_used, outgoing_inst
 			for _, player in Players:GetPlayers() do
@@ -280,7 +284,7 @@ local returns = {
 				player_map[player] = save()
 			end
 		end,
-		fireExcept = function(except: Player, value: (boolean))
+		fireExcept = function(except: Player, value: (boolean), value2: (number))
 			load_empty()
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
@@ -289,6 +293,8 @@ local returns = {
 			if value then
 				bool_4 = bit32.bor(bool_4, 0b0000000000000001)
 			end
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value2)
 			buffer.writeu8(outgoing_buff, bool_4_pos_1, bool_4)
 			local buff, used, inst = outgoing_buff, outgoing_used, outgoing_inst
 			for _, player in Players:GetPlayers() do
@@ -301,7 +307,7 @@ local returns = {
 				end
 			end
 		end,
-		fireList = function(list: { [unknown]: Player }, value: (boolean))
+		fireList = function(list: { [unknown]: Player }, value: (boolean), value2: (number))
 			load_empty()
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
@@ -310,6 +316,8 @@ local returns = {
 			if value then
 				bool_5 = bit32.bor(bool_5, 0b0000000000000001)
 			end
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value2)
 			buffer.writeu8(outgoing_buff, bool_5_pos_1, bool_5)
 			local buff, used, inst = outgoing_buff, outgoing_used, outgoing_inst
 			for _, player in list do
@@ -320,7 +328,7 @@ local returns = {
 				player_map[player] = save()
 			end
 		end,
-		fireSet = function(set: { [Player]: any }, value: (boolean))
+		fireSet = function(set: { [Player]: any }, value: (boolean), value2: (number))
 			load_empty()
 			alloc(1)
 			buffer.writeu8(outgoing_buff, outgoing_apos, 1)
@@ -329,6 +337,8 @@ local returns = {
 			if value then
 				bool_6 = bit32.bor(bool_6, 0b0000000000000001)
 			end
+			alloc(4)
+			buffer.writef32(outgoing_buff, outgoing_apos, value2)
 			buffer.writeu8(outgoing_buff, bool_6_pos_1, bool_6)
 			local buff, used, inst = outgoing_buff, outgoing_used, outgoing_inst
 			for player in set do
