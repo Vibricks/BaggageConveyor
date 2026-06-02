@@ -1,4 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SoundService = game:GetService("SoundService")
 local Charm = require(ReplicatedStorage.Packages.Charm)
 local Flipper = require(ReplicatedStorage.Packages.Flipper)
 local ConveyorStore = require(ReplicatedStorage.Shared.Store.ConveyorStore)
@@ -35,6 +36,13 @@ local function animateBag(bagModel: ConveyorUtil.bagModel, conveyorModel)
 		bagModel:ScaleTo(value)
 	end)
 
+	scaleMotor:onComplete(function()
+		local pop = SoundService.SFX.Pop:Clone() :: Sound
+		pop.PlayOnRemove = true
+		pop.Parent = SoundService.SFX
+		pop:Destroy()
+	end)
+
 	task.wait(bagLifeTime - 0.3)
 
 	local scaleOutMotor = Flipper.SingleMotor.new(1)
@@ -45,6 +53,7 @@ local function animateBag(bagModel: ConveyorUtil.bagModel, conveyorModel)
 	end)
 
 	task.wait(0.3)
+
 	bagModel:Destroy()
 end
 
