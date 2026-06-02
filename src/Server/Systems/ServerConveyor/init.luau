@@ -32,9 +32,18 @@ local function loadConveyor(conveyorModel: ConveyorUtil.ConveyorModel)
 end
 
 local function generateRandomBag(conveyorId): conveyorSchema.BagData
+	local MaterialOptions = {
+		"SmoothPlastic",
+		"Rock",
+		"Wood",
+		"Neon",
+		"Pavement",
+	}
+	local selectedMaterial = MaterialOptions[math.random(1, #MaterialOptions)]
+
 	local bagData: conveyorSchema.BagData = {
 		Color = BrickColor.Random().Color,
-		Material = "SmoothPlastic",
+		Material = selectedMaterial,
 		TimeSpawned = os.clock(),
 		UUID = string.sub(HttpService:GenerateGUID(false), 1, 4),
 	}

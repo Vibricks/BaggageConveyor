@@ -31,6 +31,11 @@ local function moveBag(bagModel: ConveyorUtil.bagModel, conveyorModel)
 	bagModel:Destroy()
 end
 
+local function updateBagVisuals(bagModel: ConveyorUtil.bagModel, bagData: conveyorSchema.BagData)
+	bagModel.Main.Color = bagData.Color
+	bagModel.Main.Material = bagData.Material
+end
+
 local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 	local conveyorModel = workspace.Active:FindFirstChild(conveyorId)
 
@@ -41,6 +46,7 @@ local function spawnBag(conveyorId: string, bagData: conveyorSchema.BagData)
 
 	--We spawn the bag here
 	local bagModel = ReplicatedStorage.Assets.Bags.DefaultBag:Clone()
+	updateBagVisuals(bagModel, bagData)
 
 	bagModel.Parent = workspace
 	bagModel:PivotTo(conveyorModel.StartPoint.CFrame)
