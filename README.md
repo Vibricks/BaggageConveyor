@@ -16,7 +16,7 @@ I decided to use charm at the forefront of this system for it's immutable state 
 | **Flipper** | Smooth animation of bag position, scale, and rotation |
 | **Zap** | Optimized network protocol for remote calls |
 | **Promise** | Async/await-style promise library |
-| **GreenTea** | Testing framework |
+| **GreenTea** | Run time type checker|
 | **Tooling** | Selene (linter), StyLua(formatter), Lune (scripting)
 
 
